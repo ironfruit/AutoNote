@@ -1,6 +1,6 @@
 {
   "name": "autonote",
-  "homepage": ".",
+  "homepage": "https://autonote-webapp.firebaseapp.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
