@@ -1,6 +1,7 @@
 // import React, {useState} from 'react'
 import Printer from '../templates/Printer'
 import Scanner from '../templates/Scanner'
+import PricingCalls from '../templates/PricingCalls'
 
 function AppBody(){
     return(
@@ -11,6 +12,7 @@ function AppBody(){
                     <option>Select Template</option>
                     <option value="Printer">Printer</option>
                     <option value="Scanner">Scanner</option>
+                    <option value="Pricing Calls">Pricing Calls</option>
                     </select>
                 </div>
                 <div className="who_main_div">
@@ -59,12 +61,17 @@ const renderYourText = () => {
     console.log(selected)
     if(selected === "Printer"){
         note.value = Printer
-        console.log()
+        //console.log()
     }
 
     if(selected === "Scanner"){
         note.value = Scanner
-        console.log()
+        //console.log()
+    }
+
+    if(selected === "Pricing Calls"){
+        note.value = PricingCalls
+        //console.log()
     }
 
     var ta = document.getElementById("autonote_ta_note")

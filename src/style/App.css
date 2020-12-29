@@ -79,6 +79,7 @@ select{
 textarea{
   width: 100%;
   padding: "9px";
+  margin:1vh 0 2vh 0;
   border-radius: .5vh;
   font-size: calc(8px + 2vmin);
   font-family: "Lato", sans-serif;
