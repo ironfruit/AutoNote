@@ -24,7 +24,7 @@ function AppBody(){
                 <div className="note_main_div">
                     <label>Note:</label>
                     <br></br>
-                    <textarea className="an_ta_note" id="autonote_ta_note" onKeyPress={PreventDefault_Note}></textarea>
+                    <textarea onChange={adjustNoteHeight} className="an_ta_note" id="autonote_ta_note" onKeyPress={PreventDefault_Note}></textarea>
                 </div>{ 
                 <div className="note_container_list_main">
                 <div className="note_container_ul">
@@ -36,6 +36,8 @@ function AppBody(){
         </div>
     )
 }
+
+
 
 const PreventDefault_Who = (e) => {
     console.log('Who Prevent Default')
@@ -67,14 +69,14 @@ const renderYourText = (e) => {
         note.value = Printer
         console.log(selected)
         resetSelection(selected)
-        adjustNoteHeight(50)
+        adjustNoteHeight("Printer")
     }
 
     if(selected.value === "Scanner"){
         note.value = Scanner
         console.log(selected)
         resetSelection(selected)
-        adjustNoteHeight(50)
+        adjustNoteHeight("Scanner")
     }
 
     if(selected.value === "Pricing Calls"){
@@ -87,16 +89,26 @@ const renderYourText = (e) => {
         // resetSelection
         resetSelection(selected)
 
-        adjustNoteHeight(0)
+        adjustNoteHeight("Pricing Callls")
     }
 
     // Make textarea height equal scrollheight
 }
 
-const adjustNoteHeight = (pixels) => {
+const adjustNoteHeight = (selected) => {
+    if(selected === "Printer"){
+    }
+
+    if(selected === "Scanner"){
+    }
+
+    if(selected === "Pricing Calls"){
+    }
     var ta = document.getElementById("autonote_ta_note")
+    console.log(ta.value)
+    let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
     ta.style.height = "0px"
-    ta.style.height = ((ta.scrollHeight + pixels) + "px")
+    ta.style.height = ((20 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
 }
   
 const add_note = () => {

@@ -93,7 +93,7 @@ textarea{
 .an_ta_note{
   resize: vertical;
   min-height: calc(100px + 2vmin);
-	max-height: calc(1000px + 2vmin);
+	max-height: calc(2000px + 2vmin);
   overflow-x: hidden;
   overflow-y: auto;
 } 
@@ -124,4 +124,14 @@ ul, list-group {
 
 p.notation{
   font-size: calc(8px + 2vmin);
+}
+
+a{
+  color: #1E77E1;
+  text-decoration-line: none;
+}
+
+a:hover{
+  color: #E1881E;
+  transition: .5s ease-in-out;
 }
