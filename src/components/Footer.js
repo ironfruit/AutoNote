@@ -1,6 +1,7 @@
-import React from 'react'
+// import React, {useState} from 'react'
 
-function AppFooter(){
+const AppFooter = () => {
+  
     return(
         <div className="AppFooter">
           <h3>Created by Wesley Franks</h3>  

@@ -55,30 +55,48 @@ const PreventDefault_Note = (e) => {
   
 }
   
-const renderYourText = () => {
-    var selected = document.getElementById('templateselector').value
+const renderYourText = (e) => {
+    var selected = document.getElementById('templateselector')
     var note = document.getElementById('autonote_ta_note')
-    console.log(selected)
-    if(selected === "Printer"){
+
+    const resetSelection = (selected) => {
+        selected.selectedIndex = 0
+    }
+
+    if(selected.value === "Printer"){
         note.value = Printer
-        //console.log()
+        console.log(selected)
+        resetSelection(selected)
+        adjustNoteHeight(50)
     }
 
-    if(selected === "Scanner"){
+    if(selected.value === "Scanner"){
         note.value = Scanner
-        //console.log()
+        console.log(selected)
+        resetSelection(selected)
+        adjustNoteHeight(50)
     }
 
-    if(selected === "Pricing Calls"){
+    if(selected.value === "Pricing Calls"){
+        // add text to textarea
         note.value = PricingCalls
-        //console.log()
+        // press enter
+        
+        // log selected
+        console.log(selected)
+        // resetSelection
+        resetSelection(selected)
+
+        adjustNoteHeight(0)
     }
 
+    // Make textarea height equal scrollheight
+}
+
+const adjustNoteHeight = (pixels) => {
     var ta = document.getElementById("autonote_ta_note")
     ta.style.height = "0px"
-    ta.style.height = ((ta.scrollHeight + 50) + "px")
-    console.log(ta.style.height)
-    // Make textarea height equal scrollheight
+    ta.style.height = ((ta.scrollHeight + pixels) + "px")
 }
   
 const add_note = () => {

@@ -1,5 +1,5 @@
 const Printer = 
-"Printer: " +
+"PRINTER: " +
 "\n" +
 "\n" +
 "BRAND: " +

@@ -121,3 +121,7 @@ ul, list-group {
   margin-top: 9px;
   margin-bottom: 9px;
 }
+
+p.notation{
+  font-size: calc(8px + 2vmin);
+}
