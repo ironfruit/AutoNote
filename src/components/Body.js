@@ -54,7 +54,7 @@ const PreventDefault_Note = (e) => {
         e.preventDefault()
         add_note();
     }
-  
+    adjustNoteHeight("")
 }
   
 const renderYourText = (e) => {
