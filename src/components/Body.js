@@ -96,19 +96,34 @@ const renderYourText = (e) => {
 }
 
 const adjustNoteHeight = (selected) => {
+
+    var ta = document.getElementById("autonote_ta_note")
+    console.log(ta.value)
+
     if(selected === "Printer"){
+        let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
+        ta.style.height = "0px"
+        ta.style.height = ((20 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
     }
 
     if(selected === "Scanner"){
+        let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
+        ta.style.height = "0px"
+        ta.style.height = ((20 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
     }
 
     if(selected === "Pricing Calls"){
+        let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
+        ta.style.height = "0px"
+        ta.style.height = ((20 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
     }
-    var ta = document.getElementById("autonote_ta_note")
-    console.log(ta.value)
-    let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
-    ta.style.height = "0px"
-    ta.style.height = ((20 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
+
+    if(selected === ""){
+        let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
+        ta.style.height = "0px"
+        ta.style.height = numberOfLineBreaks + 100 + "px"
+    }
+    
 }
   
 const add_note = () => {
