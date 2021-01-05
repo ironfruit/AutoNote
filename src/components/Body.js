@@ -65,7 +65,7 @@ const renderYourText = (e) => {
         selected.selectedIndex = 0
     }
 
-    let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
+    let numberOfLineBreaks = (ta.value.match(/\r\n/g) || []).length;
     ta.style.height = "0px"
     ta.style.height = ((10 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
 
