@@ -2,6 +2,7 @@
 import Printer from '../templates/Printer'
 import Scanner from '../templates/Scanner'
 import PricingCalls from '../templates/PricingCalls'
+import Robot from '../templates/Robot'
 
 function AppBody(){
     return(
@@ -12,6 +13,7 @@ function AppBody(){
                     <option>Select Template</option>
                     <option value="Printer">Printer</option>
                     <option value="Scanner">Scanner</option>
+                    <option value="Robot">Robot</option>
                     <option value="Pricing Calls">Pricing Calls</option>
                     </select>
                 </div>
@@ -81,6 +83,15 @@ const renderYourText = (e) => {
 
     if(selected.value === "Scanner"){
         note.value = Scanner
+        console.log(selected)
+        resetSelection(selected)
+        let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
+        ta.style.height = "0px"
+        ta.style.height = ((20 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
+    }
+
+    if(selected.value === "Robot"){
+        note.value = Robot
         console.log(selected)
         resetSelection(selected)
         let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;

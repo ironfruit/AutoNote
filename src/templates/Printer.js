@@ -2,6 +2,8 @@ const Printer =
 "PRINTER: " +
 "\n" +
 "\n" +
+"WRKST: " +
+"\n" +
 "BRAND: " +
 "\n" +
 "MODEL: " +
