@@ -24,7 +24,7 @@ function AppBody(){
                 <div className="note_main_div">
                     <label>Note:</label>
                     <br></br>
-                    <textarea onChange={adjustNoteHeight} className="an_ta_note" id="autonote_ta_note" onKeyPress={PreventDefault_Note}></textarea>
+                    <textarea onChange={renderYourText} className="an_ta_note" id="autonote_ta_note" onKeyPress={PreventDefault_Note}></textarea>
                 </div>{ 
                 <div className="note_container_list_main">
                 <div className="note_container_ul">
@@ -59,23 +59,33 @@ const PreventDefault_Note = (e) => {
 const renderYourText = (e) => {
     var selected = document.getElementById('templateselector')
     var note = document.getElementById('autonote_ta_note')
+    var ta = document.getElementById("autonote_ta_note")
 
     const resetSelection = (selected) => {
         selected.selectedIndex = 0
     }
 
+    let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
+    ta.style.height = "0px"
+    ta.style.height = ((10 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
+
     if(selected.value === "Printer"){
         note.value = Printer
         console.log(selected)
         resetSelection(selected)
-        adjustNoteHeight("Printer")
+        
+        let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
+        ta.style.height = "0px"
+        ta.style.height = ((20 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
     }
 
     if(selected.value === "Scanner"){
         note.value = Scanner
         console.log(selected)
         resetSelection(selected)
-        adjustNoteHeight("Scanner")
+        let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
+        ta.style.height = "0px"
+        ta.style.height = ((20 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
     }
 
     if(selected.value === "Pricing Calls"){
@@ -87,39 +97,10 @@ const renderYourText = (e) => {
         console.log(selected)
         // resetSelection
         resetSelection(selected)
-        adjustNoteHeight("Pricing Callls")
-    }
-}
-
-const adjustNoteHeight = (selected) => {
-
-    var ta = document.getElementById("autonote_ta_note")
-    console.log(ta.value)
-
-    if(selected === "Printer"){
         let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
         ta.style.height = "0px"
-        ta.style.height = ((20 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
+        ta.style.height = ((10 + ta.scrollHeight + numberOfLineBreaks * 10 + 12 + 2) + "px")
     }
-
-    if(selected === "Scanner"){
-        let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
-        ta.style.height = "0px"
-        ta.style.height = ((20 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
-    }
-
-    if(selected === "Pricing Calls"){
-        let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
-        ta.style.height = "0px"
-        ta.style.height = ((20 + ta.scrollHeight + numberOfLineBreaks * 10 + 12 + 2) + "px")
-    }
-
-    if(selected === ""){
-        let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
-        ta.style.height = "0px"
-        ta.style.height = ((20 + numberOfLineBreaks * 10 + 12 + 2) + "px")
-    }
-    
 }
   
 const add_note = () => {
