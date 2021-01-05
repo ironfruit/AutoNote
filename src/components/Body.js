@@ -54,7 +54,6 @@ const PreventDefault_Note = (e) => {
         e.preventDefault()
         add_note();
     }
-    adjustNoteHeight("")
 }
   
 const renderYourText = (e) => {
@@ -88,11 +87,8 @@ const renderYourText = (e) => {
         console.log(selected)
         // resetSelection
         resetSelection(selected)
-
         adjustNoteHeight("Pricing Callls")
     }
-
-    // Make textarea height equal scrollheight
 }
 
 const adjustNoteHeight = (selected) => {
@@ -115,13 +111,13 @@ const adjustNoteHeight = (selected) => {
     if(selected === "Pricing Calls"){
         let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
         ta.style.height = "0px"
-        ta.style.height = ((20 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
+        ta.style.height = ((20 + ta.scrollHeight + numberOfLineBreaks * 10 + 12 + 2) + "px")
     }
 
     if(selected === ""){
         let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
         ta.style.height = "0px"
-        ta.style.height = numberOfLineBreaks + 100 + "px"
+        ta.style.height = ((20 + numberOfLineBreaks * 10 + 12 + 2) + "px")
     }
     
 }
