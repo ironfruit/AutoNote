@@ -1,5 +1,6 @@
 body {
   font-family: "Lato", sans-serif;
+  min-width:340px;
 }
 
 .App{
@@ -52,6 +53,10 @@ body {
   font-size: calc(8px + 2vmin);
 }
 
+.Printer{
+  margin:1vh 0 2vh 0;
+}
+
 .App-Body-Note-TextArea{
   width: 100%;
   text-align: left;
@@ -85,7 +90,7 @@ textarea{
   font-family: "Lato", sans-serif;
 }
 
-.an_ta_who{
+.thin_ta{
   resize:none;
   height: calc(10px + 2vmin);
 }
@@ -98,8 +103,8 @@ textarea{
   overflow-y: auto;
 } 
 
-p.notation{
-  font-size: .9rem;
+p, span{
+  font-size: calc(8px + 2vmin);
   white-space: pre-wrap;
   word-wrap: wrap;
 }
@@ -113,17 +118,13 @@ ul, list-group {
   width: 100%;
 }
 
-.note_container{
+.note_container_div{
   border-radius: .5vh;
   color: black;
   background-color: white;
   padding: 9px;
   margin-top: 9px;
   margin-bottom: 9px;
-}
-
-p.notation{
-  font-size: calc(8px + 2vmin);
 }
 
 a{

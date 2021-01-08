@@ -1,10 +1,13 @@
 // import React, {useState} from 'react'
+import AppPreventDefault from '../Utilities/AppPreventDefault'
 import Printer from '../templates/Printer'
 import Scanner from '../templates/Scanner'
 import PricingCalls from '../templates/PricingCalls'
 import Robot from '../templates/Robot'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-function AppBody(){
+const AppBody = () => {
     return(
         <div className="AppBody">
             <div className="App-Body-Note-TextArea"> 
@@ -17,35 +20,23 @@ function AppBody(){
                     <option value="Pricing Calls">Pricing Calls</option>
                     </select>
                 </div>
-                <div className="who_main_div">
+                <div className="who_main_div" id="who_main_div">
                     <label>Who:</label>
-                    <br></br>
-                    <textarea className="an_ta_who" id="autonote_ta_who" onKeyPress={PreventDefault_Who}></textarea>
+                    <textarea className="an_ta_who" class="thin_ta" id="autonote_ta_who" onKeyPress={AppPreventDefault}></textarea>
                 </div>
-                <br></br>
                 <div className="note_main_div">
                     <label>Note:</label>
-                    <br></br>
-                    <textarea onChange={renderYourText} className="an_ta_note" id="autonote_ta_note" onKeyPress={PreventDefault_Note}></textarea>
-                </div>{ 
-                <div className="note_container_list_main">
-                <div className="note_container_ul">
+                    <textarea onChange={updateNoteTA} className="an_ta_note" id="autonote_ta_note" onKeyPress={PreventDefault_Note}></textarea>
+                </div>
+                {/* <div className="note_container_list_main"> */}
+                <div className="note_list_container">
                     <ul id="note_list_holder">
                     </ul>
                 </div>
-                </div> }
+                {/* </div>  */}
             </div>
         </div>
     )
-}
-
-
-
-const PreventDefault_Who = (e) => {
-    console.log('Who Prevent Default')
-    if(e.charCode === 13){
-        e.preventDefault()
-    }
 }
 
 // function for adding note by pressing enter 
@@ -57,46 +48,43 @@ const PreventDefault_Note = (e) => {
         add_note();
     }
 }
+
+const updateNoteTA = () => {
+    var ta = document.getElementById("autonote_ta_note")
+    let numberOfLineBreaks = (ta.value.match(/\r\n/g) || []).length;
+    ta.style.height = "0px"
+    ta.style.height = ((10 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
+}
   
 const renderYourText = (e) => {
     var selected = document.getElementById('templateselector')
     var note = document.getElementById('autonote_ta_note')
-    var ta = document.getElementById("autonote_ta_note")
 
     const resetSelection = (selected) => {
         selected.selectedIndex = 0
     }
 
-    let numberOfLineBreaks = (ta.value.match(/\r\n/g) || []).length;
-    ta.style.height = "0px"
-    ta.style.height = ((10 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
-
     if(selected.value === "Printer"){
-        note.value = Printer
+        InsertExtraPrinterElements()
         console.log(selected)
         resetSelection(selected)
-        
-        let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
-        ta.style.height = "0px"
-        ta.style.height = ((20 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
+        updateNoteTA()
     }
 
     if(selected.value === "Scanner"){
-        note.value = Scanner
+        RemoveExtraElements()
+        InsertExtraScannerElements()
         console.log(selected)
         resetSelection(selected)
-        let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
-        ta.style.height = "0px"
-        ta.style.height = ((20 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
+        updateNoteTA()
     }
 
     if(selected.value === "Robot"){
-        note.value = Robot
+        RemoveExtraElements()
+        InsertExtraRobotElements()
         console.log(selected)
         resetSelection(selected)
-        let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
-        ta.style.height = "0px"
-        ta.style.height = ((20 + ta.scrollHeight + numberOfLineBreaks * 20 + 12 + 2) + "px")
+        updateNoteTA()
     }
 
     if(selected.value === "Pricing Calls"){
@@ -108,10 +96,32 @@ const renderYourText = (e) => {
         console.log(selected)
         // resetSelection
         resetSelection(selected)
-        let numberOfLineBreaks = (ta.value.match(/\n/g) || []).length;
-        ta.style.height = "0px"
-        ta.style.height = ((10 + ta.scrollHeight + numberOfLineBreaks * 10 + 12 + 2) + "px")
+
+        var value = note.value
+
+        add_note(value)
+
+        updateNoteTA()
     }
+}
+
+const InsertExtraPrinterElements = () => {
+    const printerElement = <Printer/>
+    ReactDOM.render(printerElement, document.getElementById('who_main_div'));
+}
+
+const InsertExtraScannerElements = () => {
+    const printerElement = <Scanner/>
+    ReactDOM.render(printerElement, document.getElementById('who_main_div'));
+}
+
+const InsertExtraRobotElements = () => {
+    const printerElement = <Robot/>
+    ReactDOM.render(printerElement, document.getElementById('who_main_div'));
+}
+
+const RemoveExtraElements = () => {
+    ReactDOM.unmountComponentAtNode(document.getElementById('who_main_div'));
 }
   
 const add_note = () => {
@@ -129,19 +139,27 @@ const add_note = () => {
       
   
       // create elements 
-      var note_container_list_main = document.createElement('div');
-      note_container_list_main.classList.add('note_container_list_main');
+      //var note_container_list_main = document.createElement('div');
+      //note_container_list_main.classList.add('note_container_list_main');
       var note_container_div = document.createElement('div');
-      var note_ul_div = document.createElement('ul');
-      note_ul_div.classList.add('note_container_ul');
+      // var note_ul_div = document.createElement('ul');
+      // note_ul_div.classList.add('note_list_container');
       var note_li = document.createElement('li');
+      note_li.classList.add('an_note_list_ul_li')
       var topLine = document.createElement('span');
+      topLine.classList.add('an_note_container_topLine')
       var midLine = document.createElement('span');
+      midLine.classList.add('an_note_container_midLine')
       var bottomLine = document.createElement('span');
+      bottomLine.classList.add('an_note_container_bottomLine')
       var who_label = document.createElement('p');
+      who_label.classList.add('an_note_container_who_label')
       var who_text = document.createElement('p');
+      who_text.classList.add('an_note_container_who_text')
       var note_label = document.createElement('p');
+      note_label.classList.add('an_note_container_note_label')
       var note = document.createElement('p');
+      note.classList.add('an_note_container_note')
   
       var who_labelTextNode = document.createTextNode('Who: ');
       var who_textNode = document.createTextNode(whoNote);
@@ -167,12 +185,6 @@ const add_note = () => {
           midLine.appendChild(midL);
           note_label.appendChild(note_labelTextNode);
         }
-        /*
-        console.log(who_label);
-        console.log(whoNote);
-        console.log(note_label);
-        console.log(note_labelTextNode) 
-        */
   
         topLine.appendChild(topL);
         bottomLine.appendChild(botL);
@@ -183,8 +195,7 @@ const add_note = () => {
         note.appendChild(note_text);
   
         // adding classes to elements
-        note.classList.add('notation');
-        note_container_div.classList.add('note_container');
+        note_container_div.classList.add('note_container_div');
   
         // appending elements to parent element note_container_div
         note_container_div.appendChild(topLine);
