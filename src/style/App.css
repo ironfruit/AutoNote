@@ -1,9 +1,24 @@
-body {
-  font-family: "Lato", sans-serif;
-}
+
 
 .App{
   transition: all 0.5s ease;
+  font-family: "Lato", sans-serif;
+}
+
+.MenuBar {
+  color: white;
+  background-color: #282c34;
+  border-radius: 1.5vh;
+  margin: 3vh;
+  padding: 1vh;
+}
+
+.menuButton{
+  background-color: gray;
+  color: white;
+  border-radius: 1.5vh;
+  padding: 1vh;
+  font-size: calc(8px + 1vmin);;
 }
 
 .AppHeader {
@@ -15,6 +30,8 @@ body {
   justify-content: center;
   background-color: #282c34;
   margin: 3vh;
+  padding-left: 1vh;
+  padding-right: 1vh;
   border-radius: 1.5vh;
   min-height: 10vh;
   padding-left: 5vh;
@@ -75,7 +92,6 @@ select{
   font-size: calc(3px + 2vmin);
 }
 
-
 textarea{
   width: 100%;
   padding: "9px";
@@ -98,13 +114,6 @@ textarea{
   overflow-y: auto;
 } 
 
-p.notation{
-  font-size: .9rem;
-  white-space: pre-wrap;
-  word-wrap: wrap;
-}
-
-
 ul, list-group {
   list-style: none;
   padding-left: 0;
@@ -117,13 +126,13 @@ ul, list-group {
   border-radius: .5vh;
   color: black;
   background-color: white;
-  padding: 9px;
-  margin-top: 9px;
-  margin-bottom: 9px;
 }
 
 p.notation{
   font-size: calc(8px + 2vmin);
+  white-space: pre-wrap;
+  word-break: break-all;
+  padding: 20px;
 }
 
 a{
