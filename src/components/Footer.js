@@ -4,7 +4,7 @@ const AppFooter = () => {
   
     return(
         <div className="AppFooter">
-          <h3>Created by <a href="https://github.com/iron" target="_blank" rel="noopener noreferrer">@WesleyFranks</a></h3>  
+          <h3>Created by <a href="https://github.com/ironfruit" target="_blank" rel="noopener noreferrer">@WesleyFranks</a></h3>  
         </div>
     )
 }
