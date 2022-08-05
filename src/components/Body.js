@@ -1,4 +1,5 @@
 // import React, {useState} from 'react'
+import React from 'react'
 import Printer from '../templates/Printer'
 import Scanner from '../templates/Scanner'
 import PricingCalls from '../templates/PricingCalls'

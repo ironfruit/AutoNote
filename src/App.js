@@ -1,3 +1,4 @@
+import React from 'react'
 import './style/App.css';
 import AppHeader from './components/Header';
 import AppBody from './components/Body'
